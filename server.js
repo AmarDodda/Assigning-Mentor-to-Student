@@ -4,14 +4,14 @@ const bodyParser = require('body-parser');
 const Mentor = require('./models/Mentor');
 const Student = require('./models/Student');
 
+require('dotenv').config();
+
 const app = express();
 app.use(bodyParser.json());
 
-// Replace with your MongoDB Atlas URI
-const mongoURI = 'mongodb+srv://amardodda23:Thiago240687@mymongodb.siyyrge.mongodb.net/Mentor_Student?retryWrites=true&w=majority';
 
 // Connect to MongoDB
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('Could not connect to MongoDB', err));
 
